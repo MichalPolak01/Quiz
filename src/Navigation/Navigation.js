@@ -14,7 +14,7 @@ const generateDrawerScreens = (tests) => {
   return tests.map((test) => (
     <Drawer.Screen
       key={test.id}
-      name={test.title}
+      name={test.topic}
       options={{
         drawerIcon: ({ color }) => (
           <Ionicons name="receipt-outline" size={22} color={color} />
@@ -22,7 +22,7 @@ const generateDrawerScreens = (tests) => {
       }}
       initialParams={{ testId: test.id }}
     >
-      {() => <TestScreen title={test.title} />}
+      {() => <TestScreen topic={test.topic} />}
     </Drawer.Screen>
   ));
 };

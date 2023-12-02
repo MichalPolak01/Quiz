@@ -1,38 +1,44 @@
 export const results = [
     {
         nick: 'michal',
-        points: '2020',
-        type: 'test1',
-        date: '18-12-2023'
+        score: 18,
+        total: 20,
+        type: 'historia',
+        date: '2023-12-02'
     },
     {
-        nick: 'krzys',
-        points: '102',
-        type: 'test1',
-        date: '18-12-1999'
+        nick: 'marian',
+        score: 16,
+        total: 20,
+        type: 'matematyka',
+        date: '2023-11-12'
     },
     {
-        nick: 'jan',
-        points: '2222',
-        type: 'test3',
-        date: '16-12-2023'
+        nick: 'janusz',
+        score: 8,
+        total: 20,
+        type: 'geografia',
+        date: '2022-08-21'
     },
     {
-        nick: 'user',
-        points: '1313',
-        type: 'test1',
-        date: '04-12-2023'
+        nick: 'karol',
+        score: 15,
+        total: 20,
+        type: 'matematyka',
+        date: '2023-04-11'
     },
     {
-        nick: 'marek',
-        points: '121',
-        type: 'test2',
-        date: '18-02-2023'
+        nick: 'gracjan',
+        score: 18,
+        total: 20,
+        type: 'biologia',
+        date: '2023-11-17'
     },
     {
-        nick: 'mariusz',
-        points: '52',
-        type: 'test1',
-        date: '18-10-2023'
-    }
+        nick: 'anna',
+        score: 19,
+        total: 20,
+        type: 'chemia',
+        date: '2023-05-03'
+    },
 ]
