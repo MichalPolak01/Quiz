@@ -14,6 +14,29 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-Quiz-QuizTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Quiz-QuizTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		31D5313FE69B467E910B5DB8 /* Kalnia-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2F43563852A4F9DBF6BB3FD /* Kalnia-Bold.ttf */; };
+		2551432069184152904F5C12 /* Kalnia-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45265703454A40CA99B8003D /* Kalnia-ExtraLight.ttf */; };
+		50231E23CF3F469D9D89D260 /* Kalnia-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B31F96D75EB047459AC9E3E1 /* Kalnia-Light.ttf */; };
+		7973FFAA6B84405BA0350B4C /* Kalnia-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC8E8792A2564D2D8614FA82 /* Kalnia-Medium.ttf */; };
+		4C8C72E0BCEB4ADFA538B5C9 /* Kalnia-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5112D4ED5FF74CD6A4F99300 /* Kalnia-Regular.ttf */; };
+		791C182BF14446AA9CAF3DFE /* Kalnia-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CBBFDE84B7446CD85AF0B3F /* Kalnia-SemiBold.ttf */; };
+		B538F7F97137499A85CE4497 /* Kalnia-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A9A639E80594171AD0ED5B4 /* Kalnia-Thin.ttf */; };
+		A089352285B440699BA949FD /* Kalnia_Expanded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C70EF2CC29B48349742F5C7 /* Kalnia_Expanded-Bold.ttf */; };
+		B4783E219FC9435CA6FFC2D2 /* Kalnia_Expanded-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462C57C288784DCA8CA780C2 /* Kalnia_Expanded-ExtraLight.ttf */; };
+		C5D91ECA2E0E45DEAC367D58 /* Kalnia_Expanded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7B9764B35234DB984E207D3 /* Kalnia_Expanded-Light.ttf */; };
+		87020896D4874A41A25BA17E /* Kalnia_Expanded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30B62927CF44475DB8277222 /* Kalnia_Expanded-Medium.ttf */; };
+		1BBFE62C670742739091386C /* Kalnia_Expanded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3D85F721AC844488416B195 /* Kalnia_Expanded-Regular.ttf */; };
+		0DD0DA2496B44751A5DE6743 /* Kalnia_Expanded-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63E3C08048D84AC98522BC88 /* Kalnia_Expanded-SemiBold.ttf */; };
+		65B747ACA7514601A2EA5F57 /* Kalnia_Expanded-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50363F81039347238287CDF2 /* Kalnia_Expanded-Thin.ttf */; };
+		29FE6C009D7443C5A1340036 /* Kalnia_SemiExpanded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02D64698B169462C9CD94BD3 /* Kalnia_SemiExpanded-Bold.ttf */; };
+		EB00BAE98E5E41C5AF0EAE68 /* Kalnia_SemiExpanded-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F61164FC94C43A9B62D3C96 /* Kalnia_SemiExpanded-ExtraLight.ttf */; };
+		F488B6D9C77748D99B0C5371 /* Kalnia_SemiExpanded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E42AE13AA29948129A08BE29 /* Kalnia_SemiExpanded-Light.ttf */; };
+		61402D5221D44FB5BCCA0E1B /* Kalnia_SemiExpanded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A7110CC08409C950AC29D /* Kalnia_SemiExpanded-Medium.ttf */; };
+		491C971EA0714A588EE0BF15 /* Kalnia_SemiExpanded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BF8C85C9DB24B0CADCD5DF6 /* Kalnia_SemiExpanded-Regular.ttf */; };
+		3396ECA7CBAE4D56B4DB1110 /* Kalnia_SemiExpanded-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE60157A0947D4AC090848 /* Kalnia_SemiExpanded-SemiBold.ttf */; };
+		3F2D69F95EAC4801BE72BFDF /* Kalnia_SemiExpanded-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 514CA7D460574727A6FA753E /* Kalnia_SemiExpanded-Thin.ttf */; };
+		22965AC0565544DCA4F4A15E /* Mina-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2926781FBDB1477FBC34AEEC /* Mina-Bold.ttf */; };
+		F84C0E38443E4DA9A859320C /* Mina-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8D9487E10844055A835D4F1 /* Mina-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +67,29 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Quiz/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Quiz-QuizTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiz-QuizTests.release.xcconfig"; path = "Target Support Files/Pods-Quiz-QuizTests/Pods-Quiz-QuizTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D2F43563852A4F9DBF6BB3FD /* Kalnia-Bold.ttf */ = {isa = PBXFileReference; name = "Kalnia-Bold.ttf"; path = "../assets/fonts/Kalnia-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		45265703454A40CA99B8003D /* Kalnia-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Kalnia-ExtraLight.ttf"; path = "../assets/fonts/Kalnia-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B31F96D75EB047459AC9E3E1 /* Kalnia-Light.ttf */ = {isa = PBXFileReference; name = "Kalnia-Light.ttf"; path = "../assets/fonts/Kalnia-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DC8E8792A2564D2D8614FA82 /* Kalnia-Medium.ttf */ = {isa = PBXFileReference; name = "Kalnia-Medium.ttf"; path = "../assets/fonts/Kalnia-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5112D4ED5FF74CD6A4F99300 /* Kalnia-Regular.ttf */ = {isa = PBXFileReference; name = "Kalnia-Regular.ttf"; path = "../assets/fonts/Kalnia-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7CBBFDE84B7446CD85AF0B3F /* Kalnia-SemiBold.ttf */ = {isa = PBXFileReference; name = "Kalnia-SemiBold.ttf"; path = "../assets/fonts/Kalnia-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5A9A639E80594171AD0ED5B4 /* Kalnia-Thin.ttf */ = {isa = PBXFileReference; name = "Kalnia-Thin.ttf"; path = "../assets/fonts/Kalnia-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0C70EF2CC29B48349742F5C7 /* Kalnia_Expanded-Bold.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-Bold.ttf"; path = "../assets/fonts/Kalnia_Expanded-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		462C57C288784DCA8CA780C2 /* Kalnia_Expanded-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-ExtraLight.ttf"; path = "../assets/fonts/Kalnia_Expanded-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C7B9764B35234DB984E207D3 /* Kalnia_Expanded-Light.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-Light.ttf"; path = "../assets/fonts/Kalnia_Expanded-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		30B62927CF44475DB8277222 /* Kalnia_Expanded-Medium.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-Medium.ttf"; path = "../assets/fonts/Kalnia_Expanded-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A3D85F721AC844488416B195 /* Kalnia_Expanded-Regular.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-Regular.ttf"; path = "../assets/fonts/Kalnia_Expanded-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		63E3C08048D84AC98522BC88 /* Kalnia_Expanded-SemiBold.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-SemiBold.ttf"; path = "../assets/fonts/Kalnia_Expanded-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		50363F81039347238287CDF2 /* Kalnia_Expanded-Thin.ttf */ = {isa = PBXFileReference; name = "Kalnia_Expanded-Thin.ttf"; path = "../assets/fonts/Kalnia_Expanded-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		02D64698B169462C9CD94BD3 /* Kalnia_SemiExpanded-Bold.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-Bold.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9F61164FC94C43A9B62D3C96 /* Kalnia_SemiExpanded-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-ExtraLight.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E42AE13AA29948129A08BE29 /* Kalnia_SemiExpanded-Light.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-Light.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9D3A7110CC08409C950AC29D /* Kalnia_SemiExpanded-Medium.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-Medium.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5BF8C85C9DB24B0CADCD5DF6 /* Kalnia_SemiExpanded-Regular.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-Regular.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5BEE60157A0947D4AC090848 /* Kalnia_SemiExpanded-SemiBold.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-SemiBold.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		514CA7D460574727A6FA753E /* Kalnia_SemiExpanded-Thin.ttf */ = {isa = PBXFileReference; name = "Kalnia_SemiExpanded-Thin.ttf"; path = "../assets/fonts/Kalnia_SemiExpanded-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2926781FBDB1477FBC34AEEC /* Mina-Bold.ttf */ = {isa = PBXFileReference; name = "Mina-Bold.ttf"; path = "../assets/fonts/Mina-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B8D9487E10844055A835D4F1 /* Mina-Regular.ttf */ = {isa = PBXFileReference; name = "Mina-Regular.ttf"; path = "../assets/fonts/Mina-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +168,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				170BA3CAEE704CDB8E0F5CA8 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +194,37 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		170BA3CAEE704CDB8E0F5CA8 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				D2F43563852A4F9DBF6BB3FD /* Kalnia-Bold.ttf */,
+				45265703454A40CA99B8003D /* Kalnia-ExtraLight.ttf */,
+				B31F96D75EB047459AC9E3E1 /* Kalnia-Light.ttf */,
+				DC8E8792A2564D2D8614FA82 /* Kalnia-Medium.ttf */,
+				5112D4ED5FF74CD6A4F99300 /* Kalnia-Regular.ttf */,
+				7CBBFDE84B7446CD85AF0B3F /* Kalnia-SemiBold.ttf */,
+				5A9A639E80594171AD0ED5B4 /* Kalnia-Thin.ttf */,
+				0C70EF2CC29B48349742F5C7 /* Kalnia_Expanded-Bold.ttf */,
+				462C57C288784DCA8CA780C2 /* Kalnia_Expanded-ExtraLight.ttf */,
+				C7B9764B35234DB984E207D3 /* Kalnia_Expanded-Light.ttf */,
+				30B62927CF44475DB8277222 /* Kalnia_Expanded-Medium.ttf */,
+				A3D85F721AC844488416B195 /* Kalnia_Expanded-Regular.ttf */,
+				63E3C08048D84AC98522BC88 /* Kalnia_Expanded-SemiBold.ttf */,
+				50363F81039347238287CDF2 /* Kalnia_Expanded-Thin.ttf */,
+				02D64698B169462C9CD94BD3 /* Kalnia_SemiExpanded-Bold.ttf */,
+				9F61164FC94C43A9B62D3C96 /* Kalnia_SemiExpanded-ExtraLight.ttf */,
+				E42AE13AA29948129A08BE29 /* Kalnia_SemiExpanded-Light.ttf */,
+				9D3A7110CC08409C950AC29D /* Kalnia_SemiExpanded-Medium.ttf */,
+				5BF8C85C9DB24B0CADCD5DF6 /* Kalnia_SemiExpanded-Regular.ttf */,
+				5BEE60157A0947D4AC090848 /* Kalnia_SemiExpanded-SemiBold.ttf */,
+				514CA7D460574727A6FA753E /* Kalnia_SemiExpanded-Thin.ttf */,
+				2926781FBDB1477FBC34AEEC /* Mina-Bold.ttf */,
+				B8D9487E10844055A835D4F1 /* Mina-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +322,29 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				31D5313FE69B467E910B5DB8 /* Kalnia-Bold.ttf in Resources */,
+				2551432069184152904F5C12 /* Kalnia-ExtraLight.ttf in Resources */,
+				50231E23CF3F469D9D89D260 /* Kalnia-Light.ttf in Resources */,
+				7973FFAA6B84405BA0350B4C /* Kalnia-Medium.ttf in Resources */,
+				4C8C72E0BCEB4ADFA538B5C9 /* Kalnia-Regular.ttf in Resources */,
+				791C182BF14446AA9CAF3DFE /* Kalnia-SemiBold.ttf in Resources */,
+				B538F7F97137499A85CE4497 /* Kalnia-Thin.ttf in Resources */,
+				A089352285B440699BA949FD /* Kalnia_Expanded-Bold.ttf in Resources */,
+				B4783E219FC9435CA6FFC2D2 /* Kalnia_Expanded-ExtraLight.ttf in Resources */,
+				C5D91ECA2E0E45DEAC367D58 /* Kalnia_Expanded-Light.ttf in Resources */,
+				87020896D4874A41A25BA17E /* Kalnia_Expanded-Medium.ttf in Resources */,
+				1BBFE62C670742739091386C /* Kalnia_Expanded-Regular.ttf in Resources */,
+				0DD0DA2496B44751A5DE6743 /* Kalnia_Expanded-SemiBold.ttf in Resources */,
+				65B747ACA7514601A2EA5F57 /* Kalnia_Expanded-Thin.ttf in Resources */,
+				29FE6C009D7443C5A1340036 /* Kalnia_SemiExpanded-Bold.ttf in Resources */,
+				EB00BAE98E5E41C5AF0EAE68 /* Kalnia_SemiExpanded-ExtraLight.ttf in Resources */,
+				F488B6D9C77748D99B0C5371 /* Kalnia_SemiExpanded-Light.ttf in Resources */,
+				61402D5221D44FB5BCCA0E1B /* Kalnia_SemiExpanded-Medium.ttf in Resources */,
+				491C971EA0714A588EE0BF15 /* Kalnia_SemiExpanded-Regular.ttf in Resources */,
+				3396ECA7CBAE4D56B4DB1110 /* Kalnia_SemiExpanded-SemiBold.ttf in Resources */,
+				3F2D69F95EAC4801BE72BFDF /* Kalnia_SemiExpanded-Thin.ttf in Resources */,
+				22965AC0565544DCA4F4A15E /* Mina-Bold.ttf in Resources */,
+				F84C0E38443E4DA9A859320C /* Mina-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

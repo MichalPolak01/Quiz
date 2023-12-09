@@ -1,20 +1,47 @@
 import { View, Text, Button } from 'react-native'
-import React from 'react'
-import {tests} from '../../testData';
+import React, { useState, useEffect } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { mainStyles } from '../Styles/style';
 
 const generateItems = ({ navigation }) => {
+  const [tests, setTest] = useState([]);
+
+  const url = 'https://tgryl.pl/quiz/tests';
+
+  useEffect(() => {
+    fetch(url)
+    .then((response) => response.json())
+    .then((json) => setTest(json))
+    .catch((error) => console.log(error));
+  }, []);
+
+  const formatTags = (tags) => {
+    if (!tags || tags.length === 0) {
+      return '';
+    }
+
+    const formatedTags = tags.map((tag) => `#${tag}`).join(', ');
+
+    return formatedTags;
+  }
+
   return (
     tests.map((test) => (
-      <TouchableOpacity key={test.id} style={{width: '90%', height: '120px', backgroundColor: 'white', marginTop: '5%',
-                                  padding: 25, borderRadius: 20, borderColor: '#0909db', borderWidth: 1}} 
-                                  onPress={() => navigation.navigate(test.topic, { testId: test.id })}>
-        <Text style={{color: '#0909db', fontSize: 20, fontWeight: 500, marginBottom: '5%', textAlign: 'center',
-         backgroundColor: '#0909db', color: 'white', padding:10, borderRadius: 15}}>Temat: {test.topic}</Text>
-        <Text style={{color: 'green', fontFamily: 'Verdana'}}>Tagi: {test.tags}</Text>
-        <Text style={{color: '#0909db', fontWeight: 500, marginTop: '2%', fontFamily: 'Verdana' }}>Opis:</Text>
-        <Text style={{color: '#000', textAlign: 'justify', fontFamily: 'Verdana'}}>{test.description}</Text>
-      </TouchableOpacity>
+      <View key={test.id} style={{width:'90%'}}>
+        <TouchableOpacity key={test.id} style={mainStyles.box} 
+            onPress={() => navigation.navigate(test.name, { testId: test.id })}>
+          <Text style={{color: '#0909db', fontSize: 20, fontFamily: 'Mina-Bold', marginBottom: '5%', textAlign: 'center',
+          backgroundColor: '#e91e62', color: 'white', padding:10, borderRadius: 15}}>Temat: {test.name}</Text>
+          <Text style={{color: '#0909db', fontFamily: 'Mina-Regular'}}>Tagi: 
+            <Text style={{color: 'green'}}> {formatTags(test.tags)}</Text></Text>
+          <Text style={{color: '#0909db', marginTop: '2%', fontFamily: 'Mina-Regular' }}>Poziom: 
+            <Text style={{color: '#000'}}> {test.level}</Text></Text>
+          <Text style={{color: '#0909db', marginTop: '2%', fontFamily: 'Mina-Regular' }}>Liczba pytań:
+            <Text style={{color: '#000'}}> {test.numberOfTasks}</Text></Text>
+          <Text style={{color: '#0909db', marginTop: '2%', fontFamily: 'Mina-Regular' }}>Opis:</Text>
+          <Text style={{color: '#000', textAlign: 'justify', fontFamily: 'Kalnia-Medium'}}>{test.description}</Text>
+        </TouchableOpacity>
+      </View>
     ))
   )
 }
@@ -23,11 +50,12 @@ export const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
       {generateItems({navigation})}
-      
-      <TouchableOpacity onPress={() => navigation.navigate('Results')} 
-      style={{margin: '5%', width: 300, backgroundColor: '#0909db', padding: '5%', borderRadius: 20 }}>
-        <Text style={{color: '#fff', fontWeight: 500, textAlign: 'center', fontSize: 20}}>Sprawdź wyniki</Text>
-      </TouchableOpacity>
+      <View style={{width:'90%', margin: '5%'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Results')} 
+        style={{backgroundColor: '#e91e62', padding: '4%', borderRadius: 20 }}>
+          <Text style={{color: '#fff', fontFamily: 'Mina-Bold', textAlign: 'center', fontSize: 20}}>Sprawdź wyniki</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   )
 }

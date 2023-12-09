@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const mainStyles = StyleSheet.create({
     body: {
         flex: 1,
-        backgroundColor: 'lightblue'
+        backgroundColor: 'lightblue',
     },
     // Buttons
     buttons: {
@@ -36,14 +36,14 @@ export const mainStyles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     title: {
-        fontWeight: '800',
-        fontSize: 28,
-        marginBottom: 10,
-        color: '#0909db',
+        fontFamily: 'Mina-Bold',
+        color: '#e91e62',
+        fontSize: 32,
         textAlign: 'center',
+        marginBottom: 10,
     },
     description: {
-        fontWeight: '400',
+        fontFamily: 'Kalnia-Medium',
         color: '#0909db',
         textAlign: 'center',
         paddingHorizontal: 64,
@@ -56,7 +56,7 @@ export const mainStyles = StyleSheet.create({
     },
     buttonNext: {
         position: "absolute",
-        backgroundColor: '#3868c2',
+        backgroundColor:'#e91e62',
         borderRadius: 100,
         padding: 20,
     },
@@ -70,22 +70,22 @@ export const mainStyles = StyleSheet.create({
         marginHorizontal: 2,
         elevation: 1,
         borderRadius: 15,
-        borderWidth: 2,
+        borderWidth: 3,
         borderColor: '#0909db',
         backgroundColor: '#fff',
     },
     heading: {
         flex: 1,
-        color: '#0909db',
-        fontWeight: '700',
-        fontFamily: 'Verdana',
+        color: '#e91e62',
+        fontFamily: 'Mina-Bold',
         textAlign: 'center',
-        fontSize: 17,
+        fontSize: 18,
     },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginVertical: 5,
+        alignItems: 'center',
+        marginVertical: 4,
         marginHorizontal: 2,
         elevation: 1,
         borderRadius: 15,
@@ -96,7 +96,8 @@ export const mainStyles = StyleSheet.create({
     },
     ceil: {
         fontSize: 12,
-        fontFamily: 'Verdana',
+        fontFamily: 'Mina-Regular',
+        color: '#0909db',
         textAlign: 'center',
         flex: 1,
     },
@@ -106,12 +107,24 @@ export const mainStyles = StyleSheet.create({
         borderWidth:3,
         borderColor: '#0909db',
         backgroundColor: 'white',
-        height: 60,
+        minHeight: 60,
         borderRadius: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        margin: 10,
+        // margin: 10,
         paddingHorizontal: 20,
+        // padding: '2%',
     },
+
+    // Home
+    box: {
+        backgroundColor: 'white',
+        marginTop: '5%',
+        padding: '7%',
+        borderRadius: 20,
+        borderColor: '#0909db',
+        borderWidth: 1,
+    },
+
 });

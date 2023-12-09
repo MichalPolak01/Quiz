@@ -7,7 +7,7 @@ export const CustomDrawer = (props) => {
   return (
     <View style={{flex: 1, borderRadius: 20}} >
         <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor: '#0909db'}}>
-            <Text style={{textAlign: 'center', fontSize: 40, fontWeight: 500, color: '#fff', marginTop: 15}}>Quiz App</Text>
+            <Text style={{textAlign: 'center', fontSize: 45, fontFamily: 'Mina-Bold', color: '#fff', marginTop: 15}}>Quiz App</Text>
             {/* <ImageBackground
                 source={{ uri: '' }}
                 style={{ margin: 20, height:200 , borderRadius: 15}}

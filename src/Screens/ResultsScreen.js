@@ -1,23 +1,33 @@
-import { View, Text, RefreshControl, SafeAreaView, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, RefreshControl, SafeAreaView, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 
-import { results } from "../../resultsData";
 import { mainStyles } from '../Styles/style';
-import { FlatList } from 'react-native-gesture-handler';
 
 
 export const ResultsScreen = () => {
+  const [data, setData] = useState([]);
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState('asc');
+  const [refreshing, setRefreshing] = useState(false);
 
-  const [refreshing, setRefreshing] = React.useState(false);
+  const url = 'https://tgryl.pl/quiz/results?last=20';
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 500);
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const fetchData = () => {
+    fetch(url)
+    .then((response) => response.json())
+    .then((json) => setData(json))
+    .catch((error) => console.error(error))
+    .finally(() => setRefreshing(false));
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    fetchData();
+  };
 
   const handleHeaderPress = (field) => {
     setSortField(field);
@@ -30,34 +40,30 @@ export const ResultsScreen = () => {
       <Text style={mainStyles.ceil}>{item.score}</Text>
       <Text style={mainStyles.ceil}>{item.total}</Text>
       <Text style={mainStyles.ceil}>{item.type}</Text>
-      <Text style={mainStyles.ceil}>{item.date}</Text>
+      <Text style={mainStyles.ceil}>{item.createdOn}</Text>
     </View>
   );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}} >   
         <View style={mainStyles.header}>
           <Text style={mainStyles.heading} onPress={() => handleHeaderPress('nick')}>Nick</Text>
           <Text style={mainStyles.heading} onPress={() => handleHeaderPress('score')}>Score</Text>
           <Text style={mainStyles.heading} onPress={() => handleHeaderPress('total')}>Total</Text>
           <Text style={mainStyles.heading} onPress={() => handleHeaderPress('type')}>Type</Text>
-          <Text style={mainStyles.heading} onPress={() => handleHeaderPress('date')}>Date</Text>
+          <Text style={mainStyles.heading} onPress={() => handleHeaderPress('createdOn')}>Date</Text>
         </View>
         <FlatList
-          data={results.sort((a, b) => {
-            if (sortField) {
-              const aValue = a[sortField];
-              const bValue = b[sortField];
-        
+          data={data.sort((a, b) => {
+              aValue = !isNaN(a[sortField]) ? Number(a[sortField]) : String(a[sortField]).toLowerCase();
+              bValue = !isNaN(b[sortField]) ? Number(b[sortField]) : String(b[sortField]).toLowerCase();
               if (sortDirection === 'asc') {
                 return aValue > bValue ? 1 : -1;
               } else {
                 return aValue < bValue ? 1 : -1;
               }
-            }
-            return 0;
           })}
-          keyExtractor={(item) => item.nick.toString()}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={renderItem}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
