@@ -1,4 +1,3 @@
-// import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import {NavigationAction, NavigationContainer} from '@react-navigation/native';
 import { Navigation } from './src/Navigation/Navigation';
@@ -8,6 +7,7 @@ import { ActivityIndicator, View } from 'react-native';
 import { mainStyles } from './src/Styles/style';
 import SplashScreen from 'react-native-splash-screen';
 import { Platform } from 'react-native';
+import SQLite from 'react-native-sqlite-storage';
 
 const Loading = () => {
   return (
@@ -16,6 +16,17 @@ const Loading = () => {
     </View>
   );
 }
+
+const db = SQLite.openDatabase(
+  {
+    name: 'quizStorage',
+    location: 'default',
+  },
+  () => {},
+  error => {
+    console.log(error);
+  }
+);
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -47,6 +58,53 @@ export default function App() {
     < Loading />
     checkOnboarding();
   }, [refresh]);
+
+
+  // const createTable = () => {
+  //   db.transaction((tx) => {
+  //     tx.executeSql(
+  //       "CREATE TABLE IF NOT EXISTS "
+  //       + "Tests "
+  //       + "(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, informations TEXT);"
+  //     )
+  //   })
+  // }
+
+  // const setData = async () => {
+  //   await db.transaction(async (tx) => {
+  //     await tx.executeSql(
+  //       "INSERT INTO Tests (date, informations) VALUES ('2023-12-27', 'test')"
+  //     );
+  //   })
+  // }
+
+  // const getData = () => {
+  //   db.transaction((tx) => {
+  //     tx.executeSql(
+  //       "SELECT date FROM Tests",
+  //       [],
+  //       (tx, results) => {
+  //         var len = results.rows.length;
+  //         if (len > 0) {
+  //           var date = results.rows.item(0).date;
+  //           console.log(date);
+  //         } else {
+  //           console.log('No data');
+  //         }
+  //       },
+  //       (error) => {
+  //         console.log('Error executing SQL:', error);
+  //       }
+  //     );
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   createTable();
+  //   setData();
+  //   getData();
+  // }, []);
+
 
   return (
     <NavigationContainer>

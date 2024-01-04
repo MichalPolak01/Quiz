@@ -14,7 +14,7 @@ export const slides = [
     {
         id: '3',
         title: 'Zasady odpowiedzi',
-        description: 'Pamiętaj, że pytania mogą mieć wiele poprawnych odpowiedzi.',
+        description: 'Pamiętaj, że pytanie ma tylko jedną poprawną odpowiedź.',
         image: require('./Images/undraw_Choose_re_7d5a.png'),
     },
     {

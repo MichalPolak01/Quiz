@@ -2,18 +2,50 @@ import { View, Text, Button } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { mainStyles } from '../Styles/style';
+import SQLite from 'react-native-sqlite-storage';
+import _ from 'lodash';
+import { CommonActions } from '@react-navigation/native';
+
+
+const db = SQLite.openDatabase(
+  {
+    name: 'quiz.db',
+    createFromLocation: '~www/quiz.db',
+    location: 'Library',
+  },
+  () => {
+    console.log('Database opened successfully');
+  },
+  (error) => {
+    console.log('Open database error: ' + error.message);
+  }
+);
+
 
 const generateItems = ({ navigation }) => {
   const [tests, setTest] = useState([]);
 
-  const url = 'https://tgryl.pl/quiz/tests';
+  const getTests = async () => {
+    await db.transaction((tx) => {
+      tx.executeSql(
+        "SELECT informations FROM Tests",
+        [],
+        (tx, results) => {
+          var len = results.rows.length;
+          if (len > 0) {
+            var information = results.rows.item(0).informations;
+            setTest(JSON.parse(information));
 
-  useEffect(() => {
-    fetch(url)
-    .then((response) => response.json())
-    .then((json) => setTest(json))
-    .catch((error) => console.log(error));
-  }, []);
+          } else {
+            console.log('No data');
+          }
+        },
+        (error) => {
+          console.log('Error executing SQL:', error);
+        }
+      );
+    })
+  }
 
   const formatTags = (tags) => {
     if (!tags || tags.length === 0) {
@@ -25,11 +57,31 @@ const generateItems = ({ navigation }) => {
     return formatedTags;
   }
 
+  useEffect(() => {
+    getTests();
+  }, []);
+
+  const shuffledTests = _.shuffle(tests);
+
+  const handleNavigateToTest = (testName, testId) => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          {
+            name: testName,
+            params: { testId: testId },
+          },
+        ],
+      })
+    );
+  };
+
   return (
-    tests.map((test) => (
+    shuffledTests.map((test) => (
       <View key={test.id} style={{width:'90%'}}>
         <TouchableOpacity key={test.id} style={mainStyles.box} 
-            onPress={() => navigation.navigate(test.name, { testId: test.id })}>
+            onPress={() => handleNavigateToTest(test.name, test.id)}>
           <Text style={{color: '#0909db', fontSize: 20, fontFamily: 'Mina-Bold', marginBottom: '5%', textAlign: 'center',
           backgroundColor: '#e91e62', color: 'white', padding:10, borderRadius: 15}}>Temat: {test.name}</Text>
           <Text style={{color: '#0909db', fontFamily: 'Mina-Regular'}}>Tagi: 

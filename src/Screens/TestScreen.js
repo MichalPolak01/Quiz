@@ -4,59 +4,120 @@ import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { mainStyles } from '../Styles/style';
+import _ from 'lodash';
+import SQLite from 'react-native-sqlite-storage';
+import { tests } from '../../testData';
+import NetInfo from "@react-native-community/netinfo";
+
+const db = SQLite.openDatabase(
+  {
+    name: 'quiz.db',
+    createFromLocation: '~www/quiz.db',
+    location: 'Library',
+  },
+  () => {
+    console.log('Database opened successfully');
+  },
+  (error) => {
+    console.log('Open database error: ' + error.message);
+  }
+);
 
 
 export const TestScreen = () => {
 
   const route = useRoute();
   const { testId } = route.params;
-
   const [selectedTest, setSelectedTest] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timer, setTimer] = useState(30);
   const [isTimerActive, setIsTimerActive] = useState(true);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
-
+  
   const navigation = useNavigation();
 
   const allQuestions = selectedTest.tasks;
+
   const [currentQuestionIndex, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  // const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
   const [answerSelected, setAnswerSelected] = useState(null);
   const [isAnswerDisable, setIsAnswerDisable] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [sentScore, setSentScore] = useState(false);
 
-  const url = `https://tgryl.pl/quiz/test/${testId}`;
+  const [currentQuestionTimer, setCurrentQuestionTimer] = useState(0);
+
+  const shuffle = (array) => {
+    return _.shuffle(array);
+  };
+
+  const getTest = async () => {
+    try {
+      await db.transaction((tx) => {
+        tx.executeSql(
+          `SELECT data FROM TestDetails WHERE id="${testId}"`,
+          [],
+          (tx, results) => {
+            if (results.rows && results.rows.length > 0) {
+              const data = results.rows.item(0).data;
+              const shuffledTest = JSON.parse(data);
+              shuffledTest.tasks = shuffle(shuffledTest.tasks.map(question => {
+                question.answers = shuffle(question.answers);
+                return question;
+              }));
+              setSelectedTest(shuffledTest);
+            } else {
+              console.log('No data');
+            }
+          },
+          (error) => {
+            console.log('Error executing SQL:', error);
+          }
+        );
+      });
+    } catch (error) {
+      console.error('Error fetching test:', error);
+    }
+  };
+
 
   useEffect(() => {
+    getTest();
+
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setSelectedTest(json);
-        setLoading(false);
-        startTimer(json.tasks[0].duration);
+        setLoading(true);
+        await getTest();
+        if (Array.isArray(allQuestions) && allQuestions.length > 0) {
+          setCurrentQuestionTimer(allQuestions[0].duration);
+          setIsTimerActive(true);
+        }
       } catch (error) {
         console.error(error);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [url]);
+  }, [testId]);
+
 
   useEffect(() => {
+    let interval;
+  
     if (isTimerActive) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
-  
-      return () => clearInterval(interval);
     }
-  }, [isTimerActive]);
+  
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isTimerActive, currentQuestionTimer]);
+
 
   useEffect(() => {
     if (timer === 0) {
@@ -64,13 +125,11 @@ export const TestScreen = () => {
     }
   }, [timer]);
 
-  // useEffect(() => {
-  //   resetTimer();
-  // }, [currentQuestionIndex]);
 
-  const startTimer = (duration) => {
-    setTimer(duration);
+  const resetTimer = () => {
+    setTimer(allQuestions[currentQuestionIndex].duration);
   };
+
 
   const resetTest = () => {
     setShowScore(false);
@@ -80,8 +139,9 @@ export const TestScreen = () => {
     setAnswerSelected(null);
     setIsAnswerDisable(false);
     setShowNextButton(false);
-    resetTimer();
+    setCurrentQuestionTimer(allQuestions[0].duration);
   };
+
 
   const handleTimeout = () => {
     setCorrectAnswerIndex(allQuestions[currentQuestionIndex].answers.findIndex((a) => a.isCorrect));
@@ -91,10 +151,12 @@ export const TestScreen = () => {
     setIsTimerActive(false);
   };
 
+
   const goToHome = () => {
-    resetTest();
+    resetTest();  
     navigation.navigate('Home');
   };
+
 
   const handleNext = () => {
     if (currentQuestionIndex === allQuestions.length - 1) {
@@ -106,13 +168,14 @@ export const TestScreen = () => {
       setAnswerSelected(null);
       setIsAnswerDisable(false);
       setShowNextButton(false);
-      startTimer(allQuestions[currentQuestionIndex + 1].duration);
       setIsTimerActive(true);
+      resetTimer();
     }
   };
 
+
   const renderQuestion = () => {
-    if (loading) {
+    if (loading || !selectedTest.tasks) {
       return <Loading />;
     }
 
@@ -134,8 +197,9 @@ export const TestScreen = () => {
     );
   };
 
+
   const renderOptions = () => {
-    if (loading) {
+    if (loading || !selectedTest.tasks) {
       return <Loading />;
     }
 
@@ -187,6 +251,7 @@ export const TestScreen = () => {
     );
   };
 
+
   const validateAnswer = (answer, index) => {
     setAnswerSelected(index);
     setCorrectAnswerIndex(allQuestions[currentQuestionIndex].answers.findIndex((a) => a.isCorrect));
@@ -199,9 +264,6 @@ export const TestScreen = () => {
     setIsTimerActive(false);
   };
 
-  const resetTimer = () => {
-    setTimer(allQuestions[currentQuestionIndex].duration);
-  };
 
   const renderNextButton = () => {
     if (showNextButton) {
@@ -215,34 +277,45 @@ export const TestScreen = () => {
     }
   };
 
+
   const sendResult = async () => {
-    const url_POST = 'https://tgryl.pl/quiz/result';
-  
-    try {
-      const response = await fetch(url_POST, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          nick: 'Test',
-          score: score,
-          total: allQuestions.length,
-          type: selectedTest.name,
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      console.log('Response ok');
-  
-    } catch (error) {
-      console.error('Error sending result:', error);
+    
+    // Sprawdzenie dostępu do internetu
+    const netInfoState = await NetInfo.fetch();
+    if (!netInfoState.isConnected) {
+      console.error("Nie udało się przesłać wyników. Brak dostępu do internetu");
+      return;
     }
-    setSentScore(false);
+
+    console.log("Result sent");
+
+    // const url_POST = 'https://tgryl.pl/quiz/result';
+  
+    // try {
+    //   const response = await fetch(url_POST, {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       nick: 'Test',
+    //       score: score,
+    //       total: allQuestions.length,
+    //       type: selectedTest.name,
+    //     }),
+    //   });
+  
+    //   if (!response.ok) {
+    //     throw new Error(`HTTP error! Status: ${response.status}`);
+    //   }
+  
+    //   console.log('Response ok');
+  
+    // } catch (error) {
+    //   console.error('Error sending result:', error);
+    // }
+    // setSentScore(false);
   };
   
 
@@ -281,6 +354,7 @@ export const TestScreen = () => {
     );
   };
 
+
   const Loading = () => {
     return (
       <View style={mainStyles.container}>
@@ -289,10 +363,13 @@ export const TestScreen = () => {
     );
   };
 
+
   return (
     <ScrollView>
       {showScore ? (
-        showResults()
+        <>
+          {showResults()}
+        </>
       ) : (
         <>
           {renderQuestion()}
