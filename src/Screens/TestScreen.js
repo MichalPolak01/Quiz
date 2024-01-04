@@ -287,35 +287,35 @@ export const TestScreen = () => {
       return;
     }
 
-    console.log("Result sent");
+    // console.log("Result sent");
 
-    // const url_POST = 'https://tgryl.pl/quiz/result';
+    const url_POST = 'https://tgryl.pl/quiz/result';
   
-    // try {
-    //   const response = await fetch(url_POST, {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application/json',
-    //       'Content-type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       nick: 'Test',
-    //       score: score,
-    //       total: allQuestions.length,
-    //       type: selectedTest.name,
-    //     }),
-    //   });
+    try {
+      const response = await fetch(url_POST, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          nick: 'Test',
+          score: score,
+          total: allQuestions.length,
+          type: selectedTest.name,
+        }),
+      });
   
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! Status: ${response.status}`);
-    //   }
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
   
-    //   console.log('Response ok');
+      console.log('Response ok');
   
-    // } catch (error) {
-    //   console.error('Error sending result:', error);
-    // }
-    // setSentScore(false);
+    } catch (error) {
+      console.error('Error sending result:', error);
+    }
+    setSentScore(false);
   };
   
 

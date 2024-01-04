@@ -72,6 +72,9 @@ const db = SQLite.openDatabase(
 
 export const Navigation = () => {
   const [tests, setTest] = useState([]);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [forceUpdate, setForceUpdate] = useState(false);
+  const [firstRun, setFirstRun] = useState(true);
 
   const url = 'https://tgryl.pl/quiz/tests';
   const urlDetails = "https://tgryl.pl/quiz/test";
@@ -185,10 +188,12 @@ export const Navigation = () => {
     })
   }
 
-  const refreshData = () => {
+  const refreshData = async () => {
+    console.log("Refreshing data...");
     createTable();
-    setData();
-    // setupDatabase();
+    await setData();
+    setRefreshKey((prevKey) => prevKey + 1);
+    console.log("Data refreshed!");
   };
 
   const setupDatabase = async () => {
@@ -197,12 +202,20 @@ export const Navigation = () => {
   }
 
   useEffect(() => {
+    console.log("Setting up database...");
     setupDatabase();
-  }, []);
+    console.log("Database setup complete!");
+
+    
+    if (firstRun) {
+      refreshData();
+      setFirstRun(false);
+    }
+  }, [refreshKey, firstRun]);
 
   return (
     <Drawer.Navigator 
-        // drawerContent={props => <CustomDrawer {...props} />}
+        key={refreshKey}
         drawerContent={(props) => <CustomDrawer {...props} refreshData={refreshData} />}
         initialRouteName="Home"
         screenOptions={{headerTitleAlign: 'center', headerTintColor: '#fff', statusBarColor: '#0909db',

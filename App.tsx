@@ -59,53 +59,6 @@ export default function App() {
     checkOnboarding();
   }, [refresh]);
 
-
-  // const createTable = () => {
-  //   db.transaction((tx) => {
-  //     tx.executeSql(
-  //       "CREATE TABLE IF NOT EXISTS "
-  //       + "Tests "
-  //       + "(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, informations TEXT);"
-  //     )
-  //   })
-  // }
-
-  // const setData = async () => {
-  //   await db.transaction(async (tx) => {
-  //     await tx.executeSql(
-  //       "INSERT INTO Tests (date, informations) VALUES ('2023-12-27', 'test')"
-  //     );
-  //   })
-  // }
-
-  // const getData = () => {
-  //   db.transaction((tx) => {
-  //     tx.executeSql(
-  //       "SELECT date FROM Tests",
-  //       [],
-  //       (tx, results) => {
-  //         var len = results.rows.length;
-  //         if (len > 0) {
-  //           var date = results.rows.item(0).date;
-  //           console.log(date);
-  //         } else {
-  //           console.log('No data');
-  //         }
-  //       },
-  //       (error) => {
-  //         console.log('Error executing SQL:', error);
-  //       }
-  //     );
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   createTable();
-  //   setData();
-  //   getData();
-  // }, []);
-
-
   return (
     <NavigationContainer>
     {loading ? <Loading /> : viewOnboarding ?
