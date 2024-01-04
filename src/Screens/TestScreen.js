@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Text, TouchableOpacity, View, Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { mainStyles } from '../Styles/style';
@@ -278,20 +278,58 @@ export const TestScreen = () => {
   };
 
 
-  const sendResult = async () => {
+  // const sendResult = async () => {
     
-    // Sprawdzenie dostępu do internetu
-    const netInfoState = await NetInfo.fetch();
-    if (!netInfoState.isConnected) {
-      console.error("Nie udało się przesłać wyników. Brak dostępu do internetu");
-      return;
-    }
+  //   // Sprawdzenie dostępu do internetu
+  //   const netInfoState = await NetInfo.fetch();
+  //   if (!netInfoState.isConnected) {
+  //     console.error("Nie udało się przesłać wyników. Brak dostępu do internetu");
+  //     return;
+  //   }
 
-    // console.log("Result sent");
+  //   // console.log("Result sent");
 
-    const url_POST = 'https://tgryl.pl/quiz/result';
+  //   const url_POST = 'https://tgryl.pl/quiz/result';
   
+  //   try {
+  //     const response = await fetch(url_POST, {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         nick: 'Test',
+  //         score: score,
+  //         total: allQuestions.length,
+  //         type: selectedTest.name,
+  //       }),
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! Status: ${response.status}`);
+  //     }
+  
+  //     console.log('Response ok');
+  
+  //   } catch (error) {
+  //     console.error('Error sending result:', error);
+  //   }
+  //   setSentScore(false);
+  // };
+
+  const sendResult = async () => {
     try {
+      // Sprawdzenie dostępu do internetu
+      const netInfoState = await NetInfo.fetch();
+      if (!netInfoState.isConnected) {
+        // console.error("Nie udało się przesłać wyników. Brak dostępu do internetu");
+        Alert.alert('Brak połączenia z internetem!', 'Aby przesłać wynik, wymagane jest połączenie z internetem.');
+        return;
+      }
+  
+      const url_POST = 'https://tgryl.pl/quiz/result';
+  
       const response = await fetch(url_POST, {
         method: 'POST',
         headers: {
@@ -299,7 +337,7 @@ export const TestScreen = () => {
           'Content-type': 'application/json',
         },
         body: JSON.stringify({
-          nick: 'Test',
+          nick: 'Michał',
           score: score,
           total: allQuestions.length,
           type: selectedTest.name,
@@ -311,11 +349,11 @@ export const TestScreen = () => {
       }
   
       console.log('Response ok');
-  
     } catch (error) {
       console.error('Error sending result:', error);
+    } finally {
+      setSentScore(false);
     }
-    setSentScore(false);
   };
   
 

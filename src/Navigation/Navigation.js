@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {HomeScreen} from '../Screens/HomeScreen';
@@ -100,14 +100,16 @@ export const Navigation = () => {
 
     console.log("Data set");
 
-    // Sprawdzenie dostępu do internetu
-    const netInfoState = await NetInfo.fetch();
-    if (!netInfoState.isConnected) {
-      console.error("Nie udło się zsynchronizować danych. Brak dostępu do internetu.");
-      return;
-    }
+  try {
+      // Sprawdzenie dostępu do internetu
+      const netInfoState = await NetInfo.fetch();
+      if (!netInfoState.isConnected) {
+        // console.error("Nie udło się zsynchronizować danych. Brak dostępu do internetu.");
+        Alert.alert('Brak połączenia z internetem!', 'Aby zsynchronizować dane, wymagane jest połączenie z internetem.');
+        return;
+      }
 
-    try {
+    
       const response = await fetch(url);
       const testsData = await response.json();
 
