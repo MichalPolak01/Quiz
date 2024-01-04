@@ -1,5 +1,6 @@
 import { View, Text, RefreshControl, SafeAreaView, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import NetInfo from "@react-native-community/netinfo";
 
 import { mainStyles } from '../Styles/style';
 
@@ -17,6 +18,12 @@ export const ResultsScreen = () => {
   }, []);
 
   const fetchData = () => {
+    const netInfoState = NetInfo.fetch();
+    if (!netInfoState.isConnected) {
+      console.error("Nie udało się pobrać wyników. Brak dostępu do internetu");
+      return;
+    }
+
     fetch(url)
     .then((response) => response.json())
     .then((json) => setData(json))
